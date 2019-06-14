@@ -27,8 +27,8 @@ object Partition {
     //查看rdd1中每个分区的元素
     val rdd1 = rdd.partitionBy(new org.apache.spark.HashPartitioner(2))
 
-    //partitionBy 重新分区， repartition默认采用HashPartition分区，
-
+    //默认的分区就是HashPartition分区，
+    //注意如果多次使用该RDD或者进行join操作， 分区后peresist持久化操作
 
     rdd1.mapPartitionsWithIndex {
       (partIdx, iter) => {
